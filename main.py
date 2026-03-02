@@ -72,8 +72,7 @@ def search_word_in_directory(word, directory):
                     for line_number, line in enumerate(f, start=1):
                         if word in line:
                             files_with_word.append((file_path, line_number, line.strip()))
-                            break 
-    return files_with_word
+       return files_with_word
 def main():
     choice=0
     print("Wecome to File Systems!")
