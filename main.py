@@ -1,4 +1,5 @@
 import os
+
 def creating_file():
     base_path = input("Enter directory path: ")
 
@@ -19,6 +20,12 @@ def creating_file():
         filename = input("Enter file name: ")
         file_path = os.path.join(base_path, filename)
 
+        if os.path.exists(file_path):
+            choice = input("File exists. Overwrite? (y/n): ")
+            if choice.lower() != 'y':
+                print("Operation cancelled.")
+                return
+
         data = input("Enter data: ")
         with open(file_path, "w") as f:
             f.write(data)
@@ -33,6 +40,12 @@ def creating_file():
         filename = input("Enter file name: ")
         file_path = os.path.join(folder_path, filename)
 
+        if os.path.exists(file_path):
+            choice = input("File exists. Overwrite? (y/n): ")
+            if choice.lower() != 'y':
+                print("Operation cancelled.")
+                return
+
         data = input("Enter data: ")
         with open(file_path, "w") as f:
             f.write(data)
@@ -41,6 +54,7 @@ def creating_file():
 
     else:
         print("Invalid option")
+
 
 def search_file(directory, filename):
 
