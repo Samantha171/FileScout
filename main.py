@@ -9,7 +9,7 @@ def creating_file():
     file=open(filename,"x")
     if not os.path.exists(new_folder):
         os.makedirs(new_folder)
-    file_path = os.path.join(new_folder, filename)
+    file_path = os.path.join(path, filename)
     file_inside=input("Enter the data to be added:")
     with open(file_path, 'w') as file:
         file.write(file_inside)
