@@ -1,19 +1,47 @@
 import os
 def creating_file():
-    current_directory=input("Enter your path:")
-    new_folder=input("Enter the new folder name:")
-    path=os.path.join(current_directory,new_folder)
-    os.makedirs(path)
-    print(os.path.dirname(path))
-    filename=input("enter the file name:")
-    file=open(filename,"x")
-    if not os.path.exists(new_folder):
-        os.makedirs(new_folder)
-    file_path = os.path.join(path, filename)
-    file_inside=input("Enter the data to be added:")
-    with open(file_path, 'w') as file:
-        file.write(file_inside)
-    print(f"File '{filename}' created inside folder '{new_folder}'.")
+    base_path = input("Enter directory path: ")
+
+    print("\nChoose what you want to create:")
+    print("1. Folder only")
+    print("2. File only")
+    print("3. Folder and file")
+
+    option = input("Enter option: ")
+
+    if option == "1":
+        folder = input("Enter folder name: ")
+        folder_path = os.path.join(base_path, folder)
+        os.makedirs(folder_path, exist_ok=True)
+        print("Folder created at:", folder_path)
+
+    elif option == "2":
+        filename = input("Enter file name: ")
+        file_path = os.path.join(base_path, filename)
+
+        data = input("Enter data: ")
+        with open(file_path, "w") as f:
+            f.write(data)
+
+        print("File created at:", file_path)
+
+    elif option == "3":
+        folder = input("Enter folder name: ")
+        folder_path = os.path.join(base_path, folder)
+        os.makedirs(folder_path, exist_ok=True)
+
+        filename = input("Enter file name: ")
+        file_path = os.path.join(folder_path, filename)
+
+        data = input("Enter data: ")
+        with open(file_path, "w") as f:
+            f.write(data)
+
+        print("Folder and file created successfully.")
+
+    else:
+        print("Invalid option")
+
 def search_file(directory, filename):
 
     for root, dirs, files in os.walk(directory):
@@ -76,3 +104,4 @@ def main():
         else:
             print("Invalid choice\n")
 main()
+
