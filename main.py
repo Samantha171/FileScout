@@ -21,16 +21,27 @@ def creating_file():
         file_path = os.path.join(base_path, filename)
 
         if os.path.exists(file_path):
-            choice = input("File exists. Overwrite? (y/n): ")
-            if choice.lower() != 'y':
+            print("\nFile already exists.")
+            print("1. Overwrite")
+            print("2. Append")
+            print("3. Cancel")
+            choice = input("Choose option: ")
+
+            if choice == "1":
+                mode = "w"
+            elif choice == "2":
+                mode = "a"
+            else:
                 print("Operation cancelled.")
                 return
+        else:
+            mode = "w"
 
         data = input("Enter data: ")
-        with open(file_path, "w") as f:
-            f.write(data)
+        with open(file_path, mode) as f:
+            f.write(data + "\n")
 
-        print("File created at:", file_path)
+        print("File saved at:", file_path)
 
     elif option == "3":
         folder = input("Enter folder name: ")
@@ -41,19 +52,31 @@ def creating_file():
         file_path = os.path.join(folder_path, filename)
 
         if os.path.exists(file_path):
-            choice = input("File exists. Overwrite? (y/n): ")
-            if choice.lower() != 'y':
+            print("\nFile already exists.")
+            print("1. Overwrite")
+            print("2. Append")
+            print("3. Cancel")
+            choice = input("Choose option: ")
+
+            if choice == "1":
+                mode = "w"
+            elif choice == "2":
+                mode = "a"
+            else:
                 print("Operation cancelled.")
                 return
+        else:
+            mode = "w"
 
         data = input("Enter data: ")
-        with open(file_path, "w") as f:
-            f.write(data)
+        with open(file_path, mode) as f:
+            f.write(data + "\n")
 
-        print("Folder and file created successfully.")
+        print("Folder and file saved successfully.")
 
     else:
         print("Invalid option")
+
 
 
 def search_file(directory, filename):
